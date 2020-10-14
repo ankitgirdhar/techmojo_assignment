@@ -26,6 +26,7 @@ public class HashTagController {
 
 
     //O(log(N))
+    // updating/adding new hashtag in both treeset and hashmap
     public void addHashtag(String hashTagString) {
         HashTag hashtagReference;
         if(hashtagMap.containsKey(hashTagString)){
@@ -45,7 +46,8 @@ public class HashTagController {
     public ArrayList<String> getTopTenHashtags() {
         ArrayList<String> topTenTags = new ArrayList<String>();
         for(HashTag tag : hashtagTreeSet) {
-            topTenTags.add(tag.getText());
+            if(!topTenTags.contains(tag.getText()))
+                topTenTags.add(tag.getText());
             if(topTenTags.size()==10)
                 break;
         }
